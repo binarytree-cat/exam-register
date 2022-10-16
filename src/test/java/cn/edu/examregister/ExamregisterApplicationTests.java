@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
@@ -21,13 +22,18 @@ class ExamregisterApplicationTests {
 
     @Test
     void contextLoads() {
-        LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        userLambdaQueryWrapper.eq(User::getId,1);
-        User user = userMapper.selectOne(userLambdaQueryWrapper);
-        System.out.println(user);
+//        LambdaQueryWrapper<User> userLambdaQueryWrapper = new LambdaQueryWrapper<>();
+//        userLambdaQueryWrapper.eq(User::getId,1);
+//        User user = userMapper.selectOne(userLambdaQueryWrapper);
+//        System.out.println(user);
+//
+//        List<User> list = userService.list();
+//        System.out.println(list);
 
-        List<User> list = userService.list();
-        System.out.println(list);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = bCryptPasswordEncoder.encode("123456");
+        System.out.println(encode);
+
     }
 
 }
